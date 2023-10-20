@@ -100,7 +100,7 @@ app.post('/videos', (req: RequestWithBody<{
     }
 
     if (errors.errorsMessages.length) {
-        res.sendStatus(400).send(errors)
+        res.status(400).send(errors)
         return
     }
 
