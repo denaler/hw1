@@ -8,13 +8,13 @@ type RequestWithParams<P> = Request<P, {}, {}, {}>
 type RequestWithBody<B> = Request<{}, {}, B, {}>
 type RequestWithParamsAndBody<P,B> = Request<P, {}, B, {}>
 
-type ErrorsMassages = {
+type ErrorsMessages = {
     message: string
     field: string
 }
 
 type ErrorType = {
-    errorsMessages: ErrorsMassages[]
+    errorsMessages: ErrorsMessages[]
 }
 
 enum AvailableResolution {
