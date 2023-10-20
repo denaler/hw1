@@ -113,13 +113,13 @@ app.post('/videos', (req: RequestWithBody<{
 
     const newVideo: VideoType = {
         id: +(new Date()),
-        title,
-        author,
+        title: title,
+        author: author,
         canBeDownloaded: false,
         minAgeRestriction: null,
         createdAt: createdAt.toISOString(),
         publicationDate: publicationDate.toISOString(),
-        availableResolutions
+        availableResolutions: availableResolutions
     }
 
     videoDb.push(newVideo)
