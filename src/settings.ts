@@ -55,7 +55,7 @@ const videoDb: VideoType[] = [
 ]
 
 app.get('/videos', (req: Request, res: Response) => {
-    res.send(videoDb)
+    res.status(200).send(videoDb)
 })
 
 app.get('/videos/:id', (req: RequestWithParams<{id: number}>, res: Response) => {
@@ -68,7 +68,7 @@ app.get('/videos/:id', (req: RequestWithParams<{id: number}>, res: Response) => 
         return
     }
 
-    res.send(video)
+    res.status(200).send(video)
 })
 
 app.post('/videos', (req: RequestWithBody<{
@@ -76,13 +76,14 @@ app.post('/videos', (req: RequestWithBody<{
     author: string,
     availableResolutions: AvailableResolution[]
 }>, res: Response) => {
+
     let errors: ErrorType = {
         errorsMessages: []
     }
 
     let {title, author, availableResolutions} = req.body
 
-    if (title === null || !title || !title.length || title.trim().length > 40) {
+    if (!title || !title.length || title.trim().length > 40) {
         errors.errorsMessages.push({message: 'Invalid title', field: 'title'})
     }
 
