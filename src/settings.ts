@@ -82,7 +82,7 @@ app.post('/videos', (req: RequestWithBody<{
 
     let {title, author, availableResolutions} = req.body
 
-    if (!title || !title.length || title.trim().length > 40) {
+    if (title === null || !title || !title.length || title.trim().length > 40) {
         errors.errorsMessages.push({message: 'Invalid title', field: 'title'})
     }
 
