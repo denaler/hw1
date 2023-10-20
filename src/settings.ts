@@ -58,8 +58,8 @@ app.get('/videos', (req: Request, res: Response) => {
     res.status(200).send(videoDb)
 })
 
-app.get('/videos/:id', (req: RequestWithParams<{id: number}>, res: Response) => {
-    const id = req.params.id
+app.get('/videos/:id', (req: RequestWithParams<{ id: number }>, res: Response) => {
+    const id = +req.params.id
 
     const video = videoDb.find((video) => video.id === id)
 
@@ -131,7 +131,7 @@ app.delete ('/testing/all-data', (req: Request, res: Response) => {
 })
 
 app.delete ('/videos/:id', (req: RequestWithParams<{id: number}>, res: Response) => {
-    const id = req.params.id
+    const id = +req.params.id
 
     const video = videoDb.find((video) => video.id === id)
 
@@ -153,7 +153,7 @@ app.put('/videos/:id', (req: RequestWithParamsAndBody<
     minAgeRestriction: number | null,
     publicationDate: string
 }>, res: Response) => {
-    const id = req.params.id
+    const id = +req.params.id
 
     const video = videoDb.find((video) => video.id === id)
 
