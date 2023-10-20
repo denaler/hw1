@@ -192,7 +192,7 @@ app.put('/videos/:id', (req: RequestWithParamsAndBody<
         errors.errorsMessages.push({message: 'Invalid minAgeRestriction', field: 'minAgeRestriction'})
     }
 
-    if (isNaN(Date.parse(publicationDate))) {
+    if (publicationDate.length < 20) {
         errors.errorsMessages.push({message: 'Invalid publicationDate', field: 'publicationDate'})
     }
 
