@@ -154,7 +154,9 @@ app.put('/videos/:id', (req: RequestWithParamsAndBody<
 }>, res: Response) => {
     const id = req.params.id
 
-    if (!videoDb.find((video) => video.id === id)) {
+    const video = videoDb.find((video) => video.id === id)
+
+    if (!video) {
         res.sendStatus(404)
         return
     }
