@@ -82,20 +82,17 @@ app.post('/videos', (req: RequestWithBody<{
 
     let {title, author, availableResolutions} = req.body
 
-    if (!title || !title.length || title.trim().length > 40) {
+    if (!title === null || !title.length || title.trim().length > 40) {
         errors.errorsMessages.push({message: 'Invalid title', field: 'title'})
     }
 
-    if (!author || !author.length || author.trim().length > 20) {
+    if (!author === null || !author.length || author.trim().length > 20) {
         errors.errorsMessages.push({message: 'Invalid author', field: 'author'})
     }
 
     if (Array.isArray(availableResolutions) && availableResolutions.length) {
         availableResolutions.map((r) => {
-            !AvailableResolution[r] && errors.errorsMessages.push({
-                message: 'Invalid availableResolutions',
-                field: 'availableResolutions'
-            })
+            !AvailableResolution[r] && errors.errorsMessages.push({message: 'Invalid availableResolutions', field: 'availableResolutions'})
         })
     } else {
         availableResolutions = []
