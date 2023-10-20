@@ -178,16 +178,15 @@ app.put('/videos/:id', (req: RequestWithParamsAndBody<
 
     if (Array.isArray(availableResolutions) && availableResolutions.length) {
         availableResolutions.map((r) => {
-            !AvailableResolution[r] && errors.errorsMessages.push({
-                message: 'Invalid availableResolutions',
-                field: 'availableResolutions'
-            })
+            !AvailableResolution[r] && errors.errorsMessages.push({message: 'Invalid availableResolutions', field: 'availableResolutions'})
         })
     } else {
         availableResolutions = []
       }
 
-
+    if (typeof canBeDownloaded !== 'boolean') {
+        errors.errorsMessages.push({message: 'Invalid canBeDownloaded', field: 'canBeDownloaded'})
+    }
 
     if (minAgeRestriction !> 0 || minAgeRestriction !< 19) {
         errors.errorsMessages.push({message: 'Invalid minAgeRestriction', field: 'minAgeRestriction'})
