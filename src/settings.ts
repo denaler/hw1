@@ -82,11 +82,11 @@ app.post('/videos', (req: RequestWithBody<{
 
     let {title, author, availableResolutions} = req.body
 
-    if (title === null || !title.length || title.trim().length > 40) {
+    if (!title || !title.length || title.trim().length > 40) {
         errors.errorsMessages.push({message: 'Invalid title', field: 'title'})
     }
 
-    if (author === null || !author.length || author.trim().length > 20) {
+    if (!author || !author.length || author.trim().length > 20) {
         errors.errorsMessages.push({message: 'Invalid author', field: 'author'})
     }
 
@@ -124,7 +124,7 @@ app.post('/videos', (req: RequestWithBody<{
     res.status(201).send(newVideo)
 })
 
-app.delete ('/videos', (req: Request, res: Response) => {
+app.delete ('/testing/all-data', (req: Request, res: Response) => {
     videoDb.length = 0
     res.sendStatus(204)
 })
